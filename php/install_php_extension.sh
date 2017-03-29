@@ -187,14 +187,16 @@ if ls -l $install_dir/server/ |grep "5.3.29" > /dev/null;then
     if [ ! -f ZendGuardLoader-php-5.3-linux-glibc23-x86_64.tar.gz ];then
         wget http://downloads.zend.com/guard/5.5.0/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.tar.gz
     fi
+    tar zxvf ZendGuardLoader-php-5.3-linux-glibc23-x86_64.tar.gz
+    mv ./ZendGuardLoader-php-5.3-linux-glibc23-x86_64/php-5.3.x/ZendGuardLoader.so $install_dir/server/php/lib/php/extensions/no-debug-non-zts-$php_api/
 elif ls -l $install_dir/server/ |grep "5.6.30" > /dev/null;then
     if [ ! -f zend-loader-php5.6-linux-x86_64.tar.gz ];then
         wget http://downloads.zend.com/guard/7.0.0/zend-loader-php5.6-linux-x86_64.tar.gz
     fi
+    tar zxvf zend-loader-php5.6-linux-x86_64.tar.gz
+    mv ./zend-loader-php5.6-linux-x86_64/ZendGuardLoader.so $install_dir/server/php/lib/php/extensions/no-debug-non-zts-$php_api/
 fi
 
-tar zxvf zend-loader-php5.6-linux-x86_64.tar.gz
-mv ./zend-loader-php5.6-linux-x86_64/ZendGuardLoader.so $install_dir/server/php/lib/php/extensions/no-debug-non-zts-$php_api/
 echo "zend_extension=$install_dir/server/php/lib/php/extensions/no-debug-non-zts-$php_api/ZendGuardLoader.so" >> $install_dir/server/php/etc/php.ini
 
 
