@@ -39,9 +39,9 @@ END
     elif ls -l $install_dir/server/ |grep "5.6.30" > /dev/null;then
          git checkout XDEBUG_2_2_1
     fi
-
+    ./configure --with-php-config=$install_dir/server/php/bin/php-config &&
     make && make install
-    echo 'zend_extension=/etc/php5/lib/php/extensions/no-debug-non-zts-'$php_api'/xdebug.so' >> /data/server/php/etc/php.ini && \
+    echo 'zend_extension='$install_dir/server/php'/lib/php/extensions/no-debug-non-zts-'$php_api'/xdebug.so' >> /data/server/php/etc/php.ini && \
     echo 'xdebug.remote_enable=1 ' >> /data/server/php/etc/php.ini &&  \
     echo 'xdebug.remote_autostart=1' >> /data/server/php/etc/php.ini &&   \
     echo 'xdebug.remote_connect_back=1' >> /data/server/php/etc/php.ini && \
