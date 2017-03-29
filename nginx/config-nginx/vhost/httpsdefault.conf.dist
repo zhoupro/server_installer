@@ -1,0 +1,95 @@
+server
+{
+    listen       443;
+    #待确认
+    server_name  127.0.0.1 localhost;
+    index index.html index.htm index.php;
+    root  /data/www/wwwroot;
+    ssl                  on;
+    ssl_certificate      vhost/server.pem;
+    ssl_certificate_key  vhost/server.key;
+    ssl_session_timeout  5m;
+    ssl_protocols  TLSv1  SSLv2 SSLv3 TLSv1.1 TLSv1.2;
+    #启用TLS1.1、TLS1.2要求OpenSSL1.0.1及以上版本，若您的OpenSSL版本低于要求，请使用 ssl_protocols TLSv1;
+    ssl_ciphers  HIGH:!RC4:!MD5:!aNULL:!eNULL:!NULL:!DH:!EDH:!EXP:+MEDIUM;
+    ssl_prefer_server_ciphers   on;
+
+    if (!-e $request_filename) {
+        rewrite ^/(.*)$ /index.php/$1 last;
+    }
+
+
+    if ($request_uri ~ (.+?\.php)(|/.+)$ ){
+                   break;
+    }
+    if (!-e $request_filename) {
+         rewrite ^/(.*)$ /index.php/$1 last;
+    }
+
+    location ~ ^/(.*)/.git/.*\.(php)?$
+    {
+        return 404;
+        deny all;
+    }
+
+     location ~ ^/(.*)/data/.*\.(php)?$
+    {
+        return 404;
+        deny all;
+    }
+
+    location ~ ^/(.*)/public/.*\.(php)?$
+    {
+        return 404;
+        deny all;
+    }
+
+    location ~ ^/(.*)/themes/.*\.(php)?$
+    {
+        return 404;
+        deny all;
+    }
+
+    location ~ ^/(.*)/wap_themes/.*\.(php)?$
+    {
+        return 404;
+        deny all;
+    }
+
+    location ~ ^/shopadmin {
+        rewrite  ^/(.*)$  /index.php/$1 last;
+        break;
+    }
+
+	location ~ \.php {
+        include        fastcgi_params;
+        set $real_script_name $fastcgi_script_name;
+        set $path_info "";
+        set $real_script_name $fastcgi_script_name;
+        if ($fastcgi_script_name ~ "^(.+\.php)(/.+)$") {
+            set $real_script_name $1;
+            set $path_info $2;
+        }
+	    fastcgi_param HTTPS on;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_param SCRIPT_NAME $real_script_name;
+        fastcgi_param PATH_INFO $path_info;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+    }
+
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+    {
+      expires      30d;
+    }
+
+    location ~ .*\.(js|css)?$
+    {
+      expires      1h;
+    }
+
+
+    #access_log /data/log/nginx/access.log;
+    #error_log  /data/log/nginx/error.log;
+
+}
