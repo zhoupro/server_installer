@@ -1,5 +1,4 @@
 #!/bin/sh
-
 CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
 if [ ! -f libiconv-1.13.1.tar.gz ];then
 	wget http://oss.aliyuncs.com/aliyunecs/onekey/libiconv-1.13.1.tar.gz

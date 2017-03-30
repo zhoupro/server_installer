@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #正式数据库配置
-sq_host='rds637zp6c38m5952l72.mysql.rds.aliyuncs.com'
-sq_user='huanqiughs_2016w'
-sq_pass='ghs2016)_+2o16'
-sq_db='ecstore'
+sq_host=''
+sq_user=''
+sq_pass=''
+sq_db=''
 
 #sphinx安装
 if (( 1$issphinx==11 )) ;then

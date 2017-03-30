@@ -1,7 +1,5 @@
 #!/bin/bash
 
-ifubuntu=$(cat /etc/issue | grep -i ubuntu)
-
 mkdir -p $install_dir
 mkdir -p $install_dir/server
 mkdir -p $install_dir/log
@@ -22,14 +20,8 @@ fi
 if ((1$ifnginx==11)) ;then
     useradd -s /bin/nologin www
     groupadd www
-    if [ "$ifubuntu" != "" ];then
-        useradd -g www -M -d /opt/www -s /usr/sbin/nologin www &> /dev/null
-    else
-        useradd -g www -M -d /opt/www -s /sbin/nologin www &> /dev/null
-
-    fi
+    useradd -g www -M -d /opt/www -s /sbin/nologin www &> /dev/null
     mkdir -p $install_dir/server/${web_dir}
-
     mkdir -p $install_dir/www/wwwroot
     mkdir -p $install_dir/log/nginx
     mkdir -p $install_dir/log/nginx/access
