@@ -66,6 +66,7 @@ sed -i 's,^pm.max_spare_servers = 3,pm.max_spare_servers = 35,g'   $install_dir/
 sed -i 's,^pm.max_children = 5,pm.max_children = 100,g'   $install_dir/server/php/etc/php-fpm.conf
 sed -i 's,^pm.start_servers = 2,pm.start_servers = 20,g'   $install_dir/server/php/etc/php-fpm.conf
 sed -i 's,;pid = run/php-fpm.pid,pid = run/php-fpm.pid,g'   $install_dir/server/php/etc/php-fpm.conf
+sed -i 's,listen = 127.0.0.1:9000,listen = 9000,g'   $install_dir/server/php/etc/php-fpm.conf
 sed -i 's,;error_log = log/php-fpm.log,error_log = '$install_dir'/log/php/php-fpm.log,g'   $install_dir/server/php/etc/php-fpm.conf
 sed -i 's,;slowlog = log/$pool.log.slow,slowlog = '$install_dir'/log/php/\$pool.log.slow,g'   $install_dir/server/php/etc/php-fpm.conf
 #self start
