@@ -70,6 +70,8 @@ sed -i 's,;error_log = log/php-fpm.log,error_log = '$install_dir'/server/php/var
 sed -i 's,;slowlog = log/$pool.log.slow,slowlog = '$install_dir'/server/php/var/log/\$pool.log.slow,g'   $install_dir/server/php/etc/php-fpm.conf
 #self start
 cp $install_dir/server/php/etc/php-fpm.d/www.conf.default $install_dir/server/php/etc/php-fpm.d/www.conf
+
+sed -i 's,listen = 127.0.0.1:9000,listen = 9000,g' $install_dir/server/php/etc/php-fpm.d/www.conf
 install -v -m755 ./php-7.1.3/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
 /etc/init.d/php-fpm start
 sleep 5
