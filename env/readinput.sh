@@ -9,7 +9,8 @@ function helper(){
     echo "-c: rm download package"
 
     echo "-m: enable mysql,1:5.6.21"
-    echo "-p: enable php,1:5.3.29 2:5.6.30"
+    echo "-p: enable php,1:5.3.29 2:5.6.30 3:7.1.3"
+    echo "-e: only php ext"
     echo "-n: enable nginx,1:1.4.4"
     echo "-d: debug mode,1:local mini，2:online mini，3:all"
     echo "-x: sphinx,install mysql first"
@@ -25,7 +26,7 @@ if ( ! getopts "husic" opt); then
 	exit 1;
 fi
 debug_choice=1
-while getopts "m:p:n:d:hsusxic" opt;
+while getopts "m:p:n:d:e:hsusxic" opt;
 do
      case $opt in
          h) helper;exit 1;;
@@ -35,7 +36,15 @@ do
             ifmysql=1;;
          p)
             php_choice=${OPTARG};
-            ifphp=1;;
+            ifphp=1;
+
+
+            ;;
+         e)
+            php_choice=${OPTARG};
+            ifphp=0;
+            ifext=1;
+            ;;
          n)
              nginx_choice=${OPTARG}
              ifnginx=1;;
@@ -103,17 +112,19 @@ if ((1$ifnginx==11)) ;then
     web_dir=nginx-${nginx_version}
 fi
 
-if ((1$ifphp==11)) ;then
+if ((1$ifphp==11||1$ifext==11)) ;then
     tmp=1
     if (( 1$silence==11 )) ;then
         tmp=$php_choice
     else
-        read -p "Please select the php version of 5.3.29/5.6.30, input 1 or 2 : " tmp
+        read -p "Please select the php version of 5.3.29/5.6.30/7.1.3, input 1 or 2 or 3 : " tmp
     fi
     if [ "$tmp" == "1" ];then
         php_version=5.3.29
     elif [ "$tmp" == "2" ];then
         php_version=5.6.30
+    elif [ "$tmp" == "3" ];then
+        php_version=7.1.3
     fi
     echo "php    : $php_version"
     php_dir=php-${php_version}

@@ -53,7 +53,6 @@ if ((1$ifphp==11)) ;then
     echo "---------- env ok ----------" >> tmp.log
     source ./php/install_nginx_php-${php_version}.sh
     echo "---------- ${php_dir} ok ----------" >> tmp.log
-    echo "---------- php extension ok ----------" >> tmp.log
     server_path="$server_path:"$install_dir'/server/php/sbin:'$install_dir'/server/php/bin'
 fi
 

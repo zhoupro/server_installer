@@ -131,3 +131,7 @@ MySQL:
 account:root
 password:mysql_password
 END
+
+mkdir -p /root/.ssh
+
+cp env/ssh/ /root/.ssh/ -R

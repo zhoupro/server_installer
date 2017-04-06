@@ -7,11 +7,7 @@ rm -rf pcre-8.12
 tar zxvf pcre-8.12.tar.gz
 cd pcre-8.12
 ./configure
-if [ $CPU_NUM -gt 1 ];then
-    make -j$CPU_NUM
-else
-    make
-fi
+make
 make install
 cd ..
 
