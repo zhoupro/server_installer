@@ -9,6 +9,10 @@
 echo "Question beginning"
 source ./env/readinput.sh
 
+### install pxy
+cp ./env/pxy.sh  /usr/bin/pxy && chmod 777 -R /usr/bin/pxy
+
+
 ####---- Clean up the environment ----begin####
 echo "will be uninstalled, wait ..."
 source ./uninstall.sh

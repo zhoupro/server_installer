@@ -13,6 +13,7 @@ fi
 source php/extension/memcache.sh
 source php/extension/redis.sh
 source php/extension/zend.sh
+source php/extension/composer.sh
 
 
 
