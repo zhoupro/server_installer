@@ -47,9 +47,6 @@ fi
 make install
 cd ..
 
-
-git clone git@github.com:libevent/libevent.git
-
 git clone git://github.com/libevent/libevent.git
 cd libevent
 git checkout release-1.4.14b-stable
