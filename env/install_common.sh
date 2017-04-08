@@ -16,7 +16,7 @@ if [ ! -f zlib-1.2.11.tar.gz ];then
   wget	http://zlib.net/zlib-1.2.11.tar.xz
 fi
 rm -rf zlib-1.2.11
-tar jxvf zlib-1.2.11.tar.xz
+tar Jxvf zlib-1.2.11.tar.xz
 cd zlib-1.2.11
 ./configure
 make CFLAGS=-fpic
