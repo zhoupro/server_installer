@@ -44,7 +44,6 @@ mysqladmin -uroot -p oldpwd password newpwd
 >* Mysql 目录 /data/server/mysql
 >* Php 目录/data/server/php
 >* nginx 目录/data/server/nginx
->* Nginx 虚拟主机添加 你可以修改/alidata/server/nginx/conf/vhost/*
 
 * 服务器操作命令汇总
 >* nginx:
