@@ -17,13 +17,13 @@ cd ..
 
 
 
-if [ ! -f freetype-2.1.10.tar.gz ];then
-	wget http://download.savannah.gnu.org/releases/freetype/freetype-2.1.10.tar.gz
+if [ ! -f freetype-2.5.2.tar.gz ];then
+	wget https://sourceforge.net/projects/freetype/files/freetype2/2.5.2/freetype-2.5.2.tar.gz/download   -O freetype-2.5.2.tar.gz
 fi
-rm -rf freetype-2.1.10
-tar zxvf freetype-2.1.10.tar.gz
-cd freetype-2.1.10
-./configure --prefix=/usr/local/freetype.2.1.10
+rm -rf freetype-2.5.2
+tar zxvf freetype-2.5.2.tar.gz
+cd freetype-2.5.2
+./configure --prefix=/usr/local/freetype.2.5.2
 if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM
 else
