@@ -10,7 +10,8 @@ echo "Question beginning"
 source ./env/readinput.sh
 
 ### install pxy
-cp ./env/pxy.sh  /usr/bin/pxy && chmod 777 -R /usr/bin/pxy
+cp ./env/CA.crt  /
+cp ./env/pxy.sh  /usr/local/bin/pxy && chmod 777 -R /usr/local/bin/pxy
 
 
 ####---- Clean up the environment ----begin####

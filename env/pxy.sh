@@ -9,3 +9,11 @@ start=$(date +%s)
 $*
 end=$(date +%s)
 echo $(( end - start ))
+
+unset http_proxy
+unset https_proxy
+unset HTTP_PROXY
+unset HTTPS_PROXY
+unset COMPOSER_CAFILE
+
+
