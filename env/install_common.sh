@@ -12,7 +12,7 @@ make install
 cd ..
 
 
-if [ ! -f zlib-1.2.11.tar.gz ];then
+if [ ! -f zlib-1.2.11.tar.xz ];then
   wget	http://zlib.net/zlib-1.2.11.tar.xz
 fi
 rm -rf zlib-1.2.11
