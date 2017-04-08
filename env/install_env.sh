@@ -1,11 +1,11 @@
 #!/bin/sh
 CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
-if [ ! -f libiconv-1.13.1.tar.gz ];then
-	wget http://oss.aliyuncs.com/aliyunecs/onekey/libiconv-1.13.1.tar.gz
+if [ ! -f libiconv-1.15.tar.gz ];then
+	wget https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz
 fi
-rm -rf libiconv-1.13.1
-tar zxvf libiconv-1.13.1.tar.gz
-cd libiconv-1.13.1
+rm -rf libiconv-1.15
+tar zxvf libiconv-1.15.tar.gz
+cd libiconv-1.15
 ./configure --prefix=/usr/local
 if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM
@@ -18,7 +18,7 @@ cd ..
 
 
 if [ ! -f freetype-2.1.10.tar.gz ];then
-	wget http://oss.aliyuncs.com/aliyunecs/onekey/freetype-2.1.10.tar.gz
+	wget http://download.savannah.gnu.org/releases/freetype/freetype-2.1.10.tar.gz
 fi
 rm -rf freetype-2.1.10
 tar zxvf freetype-2.1.10.tar.gz
@@ -33,8 +33,7 @@ make install
 cd ..
 
 if [ ! -f libpng-1.2.50.tar.gz ];then
-	#wget http://soft.phpwind.me/web/libpng-1.2.8.tar.gz
-    wget http://oss.aliyuncs.com/aliyunecs/onekey/libpng-1.2.50.tar.gz
+    wget http://prdownloads.sourceforge.net/libpng/libpng-1.2.50.tar.gz
 fi
 rm -rf libpng-1.2.50
 tar zxvf libpng-1.2.50.tar.gz
@@ -48,33 +47,26 @@ fi
 make install
 cd ..
 
-if [ ! -f libevent-1.4.14b.tar.gz ];then
-	wget http://oss.aliyuncs.com/aliyunecs/onekey/libevent-1.4.14b.tar.gz
-fi
-rm -rf libevent-1.4.14b
-tar zxvf libevent-1.4.14b.tar.gz
-cd libevent-1.4.14b
+
+git clone git@github.com:libevent/libevent.git
+
+git clone git://github.com/libevent/libevent.git
+cd libevent
+git checkout release-1.4.14b-stable
+
 ./configure
-if [ $CPU_NUM -gt 1 ];then
-    make -j$CPU_NUM
-else
-    make
-fi
+make
 make install
 cd ..
 
 if [ ! -f libmcrypt-2.5.8.tar.gz ];then
-	wget http://oss.aliyuncs.com/aliyunecs/onekey/libmcrypt-2.5.8.tar.gz
+	wget   https://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz/download -O libmcrypt-2.5.8.tar.gz
 fi
 rm -rf libmcrypt-2.5.8
 tar zxvf libmcrypt-2.5.8.tar.gz
 cd libmcrypt-2.5.8
 ./configure --disable-posix-threads
-if [ $CPU_NUM -gt 1 ];then
-    make -j$CPU_NUM
-else
-    make
-fi
+make
 make install
 /sbin/ldconfig
 cd libltdl/
@@ -85,7 +77,7 @@ cd ../..
 
 
 if [ ! -f jpegsrc.v6b.tar.gz ];then
-	wget http://oss.aliyuncs.com/aliyunecs/onekey/jpegsrc.v6b.tar.gz
+	wget http://www.ijg.org/files/jpegsrc.v6b.tar.gz
 fi
 rm -rf jpeg-6b
 tar zxvf jpegsrc.v6b.tar.gz

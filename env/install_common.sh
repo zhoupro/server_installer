@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ ! -f pcre-8.12.tar.gz ];then
-	wget http://oss.aliyuncs.com/aliyunecs/onekey/pcre-8.12.tar.gz
+	wget https://ftp.pcre.org/pub/pcre/pcre-8.12.tar.gz
 fi
 rm -rf pcre-8.12
 tar zxvf pcre-8.12.tar.gz
@@ -12,17 +12,14 @@ make install
 cd ..
 
 
-if [ ! -f zlib-1.2.3.tar.gz ];then
-	wget http://oss.aliyuncs.com/aliyunecs/onekey/zlib-1.2.3.tar.gz
+if [ ! -f zlib-1.2.11.tar.gz ];then
+	http://zlib.net/zlib-1.2.11.tar.xz
+
 fi
-rm -rf zlib-1.2.3
-tar zxvf zlib-1.2.3.tar.gz
-cd zlib-1.2.3
+rm -rf zlib-1.2.11
+tar jxvf zlib-1.2.11.tar.xz
+cd zlib-1.2.11
 ./configure
-if [ $CPU_NUM -gt 1 ];then
-    make CFLAGS=-fpic -j$CPU_NUM
-else
-    make CFLAGS=-fpic
-fi
+make CFLAGS=-fpic
 make install
 cd ..
