@@ -1,7 +1,7 @@
 #!/bin/bash
 rm -rf php-7.1.3
 if [ ! -f php-7.1.3.tar.gz ];then
-    wget http://mirrors.sohu.com/php/php-7.1.3.tar.gz
+    wget http://tw1.php.net/get/php-7.1.3.tar.gz/from/this/mirror  -O  php-7.1.3.tar.gz
 fi
 tar zxvf php-7.1.3.tar.gz
 cd php-7.1.3
