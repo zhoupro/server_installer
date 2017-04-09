@@ -52,6 +52,7 @@ git clone git://github.com/libevent/libevent.git
 cd libevent
 git checkout release-1.4.14b-stable
 ./autogen.sh
+./configure
 make
 make install
 cd ..
