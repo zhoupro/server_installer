@@ -17,13 +17,14 @@ cd ..
 
 
 
-if [ ! -f freetype-2.5.2.tar.gz ];then
-	wget https://sourceforge.net/projects/freetype/files/freetype2/2.5.2/freetype-2.5.2.tar.gz/download   -O freetype-2.5.2.tar.gz
+if [ ! -f freetype-2.1.10.tar.gz ];then
+	wget http://gnu.mirrors.pair.com/savannah/savannah/freetype/freetype-old/freetype-2.1.10.tar.gz
+
 fi
-rm -rf freetype-2.5.2
-tar zxvf freetype-2.5.2.tar.gz
-cd freetype-2.5.2
-./configure --prefix=/usr/local/freetype.2.5.2
+rm -rf freetype-2.1.10
+tar zxvf freetype-2.1.10.tar.gz
+cd freetype-2.1.10
+./configure --prefix=/usr/local/freetype.2.1.10
 if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM
 else
@@ -50,8 +51,7 @@ cd ..
 git clone git://github.com/libevent/libevent.git
 cd libevent
 git checkout release-1.4.14b-stable
-
-./configure
+./autogen.sh
 make
 make install
 cd ..
