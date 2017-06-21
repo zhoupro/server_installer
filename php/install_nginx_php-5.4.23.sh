@@ -1,10 +1,10 @@
 #!/bin/bash
-rm -rf php-5.3.29
-if [ ! -f php-5.3.29.tar.gz ];then
-  wget http://mirrors.sohu.com/php/php-5.3.29.tar.gz
+rm -rf php-5.4.23
+if [ ! -f php-5.4.23.tar.gz ];then
+   wget http://mirrors.sohu.com/php/php-5.4.23.tar.gz
 fi
-tar zxvf php-5.3.29.tar.gz
-cd php-5.3.29
+tar zxvf php-5.4.23.tar.gz
+cd php-5.4.23
 ./configure --prefix=$install_dir/server/php \
 --with-config-file-path=$install_dir/server/php/etc \
 --with-mysql=mysqlnd \
@@ -49,7 +49,7 @@ else
 fi
 make install
 cd ..
-cp ./php-5.3.29/php.ini-production $install_dir/server/php/etc/php.ini
+cp ./php-5.4.23/php.ini-production $install_dir/server/php/etc/php.ini
 #adjust php.ini
 sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "'$install_dir'/server/php/lib/php/extensions/no-debug-non-zts-20090626/"#'  $install_dir/server/php/etc/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 64M/g' $install_dir/server/php/etc/php.ini
@@ -70,6 +70,6 @@ sed -i 's,listen = 127.0.0.1:9000,listen = 9000,g'   $install_dir/server/php/etc
 sed -i 's,;error_log = log/php-fpm.log,error_log = '$install_dir'/log/php/php-fpm.log,g'   $install_dir/server/php/etc/php-fpm.conf
 sed -i 's,;slowlog = log/$pool.log.slow,slowlog = '$install_dir'/log/php/\$pool.log.slow,g'   $install_dir/server/php/etc/php-fpm.conf
 #self start
-install -v -m755 ./php-5.3.29/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
+install -v -m755 ./php-5.4.23/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
 /etc/init.d/php-fpm start
 sleep 5

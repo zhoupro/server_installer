@@ -9,7 +9,7 @@ function helper(){
     echo "-c: rm download package"
 
     echo "-m: enable mysql,1:5.6.21"
-    echo "-p: enable php,1:5.3.29 2:5.6.30 3:7.1.3"
+    echo "-p: enable php,1:5.3.29 2:5.6.30 3:7.1.3 4:5.4.23"
     echo "-e: only php ext"
     echo "-n: enable nginx,1:1.4.4"
     echo "-d: debug mode,1:local mini，2:online mini，3:all"
@@ -117,7 +117,7 @@ if ((1$ifphp==11||1$ifext==11)) ;then
     if (( 1$silence==11 )) ;then
         tmp=$php_choice
     else
-        read -p "Please select the php version of 5.3.29/5.6.30/7.1.3, input 1 or 2 or 3 : " tmp
+        read -p "Please select the php version of 5.3.29/5.6.30/7.1.3, input 1 or 2 or 3 or 4 : " tmp
     fi
     if [ "$tmp" == "1" ];then
         php_version=5.3.29
@@ -125,7 +125,11 @@ if ((1$ifphp==11||1$ifext==11)) ;then
         php_version=5.6.30
     elif [ "$tmp" == "3" ];then
         php_version=7.1.3
+
+    elif [ "$tmp" == "4" ];then
+        php_version=5.4.23
     fi
+
     echo "php    : $php_version"
     php_dir=php-${php_version}
 fi
