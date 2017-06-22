@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-extension_dir=`php-config --extension-dir`
+extension_dir=`/data/server/php/bin/php-config --extension-dir`
 mkdir -p extension_dir
 
 case $php_version in

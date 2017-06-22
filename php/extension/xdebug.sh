@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-extension_dir=`php-config --extension-dir`
+extension_dir=`/data/server/php/bin/php-config --extension-dir`
 case $php_version in
      5.3.29)
         git clone git://github.com/xdebug/xdebug.git
