@@ -26,7 +26,7 @@ if ( ! getopts "husic" opt); then
 	exit 1;
 fi
 debug_choice=1
-while getopts "m:p:n:d:e:hsusxic" opt;
+while getopts "m:p:n:d:e:hsusic" opt;
 do
      case $opt in
          h) helper;exit 1;;
@@ -51,13 +51,6 @@ do
          d)
             debug_choice=${OPTARG}
             isdebug=1;;
-         x)
-             if (( '1'$ifmysql!='11' )) ;
-             then
-                helper;
-                exit 1
-             fi
-             issphinx=1;;
          u) isrm=1;;
          c) isclean=1;;
      esac
