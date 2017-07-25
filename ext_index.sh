@@ -10,6 +10,8 @@ elif ((1$debug_choice==12));then
     source php/extension/scws.sh
 fi
 
+source php/extension/sphinx.sh
+source php/extension/scws.sh
 source php/extension/memcache.sh
 source php/extension/redis.sh
 source php/extension/zend.sh
