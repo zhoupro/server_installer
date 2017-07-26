@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-#正式数据库配置
-sq_host=''
-sq_user=''
-sq_pass=''
-sq_db=''
 
 case $php_version in
      5.3.29)
