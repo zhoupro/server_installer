@@ -37,8 +37,8 @@ cd php-7.1.3
 --disable-debug \
 --with-openssl \
 --disable-maintainer-zts \
---disable-safe-mode \
---disable-fileinfo
+--disable-safe-mode
+
 
 CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
 if [ $CPU_NUM -gt 1 ];then
