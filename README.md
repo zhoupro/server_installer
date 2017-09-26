@@ -1,6 +1,6 @@
 ## 系统安装
 
-###简介
+### 简介
 此安装包使用于centos系列,执行一键安装包(./install.sh),
 会自动清理之前一键安装包安装过的环境。如果您已经安装过一键安装包,
 再次执行安装,如若有重要数据,请自行备份/data 目录。输入命令 :netstat -tunpl
@@ -12,7 +12,8 @@
 * nginx: 1.4, 1.12
 * mysql:5.6.21
 * php:5.3, 5.4, 5.5, 5.6, 7.0, 7.1
-* php 扩展:apc,memcache redis scws sphinx xdebug xhprof zend
+* php 扩展:apc, memcache, redis, scws, sphinx,
+          xdebug, xhprof, zend, swoole, intl 
 
 
 ### 配置nginx主机
