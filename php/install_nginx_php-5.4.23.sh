@@ -51,7 +51,8 @@ make install
 cd ..
 cp ./php-5.4.23/php.ini-production $install_dir/server/php/etc/php.ini
 #adjust php.ini
-sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "'$install_dir'/server/php/lib/php/extensions/no-debug-non-zts-20090626/"#'  $install_dir/server/php/etc/php.ini
+extension_dir=`/data/server/php/bin/php-config --extension-dir`
+sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "'$extension_dir'"#'  $install_dir/server/php/etc/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 64M/g' $install_dir/server/php/etc/php.ini
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' $install_dir/server/php/etc/php.ini
 sed -i 's/;date.timezone =/date.timezone = PRC/g' $install_dir/server/php/etc/php.ini
