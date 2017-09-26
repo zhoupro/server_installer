@@ -1,11 +1,11 @@
 #!/bin/bash
 
-rm -rf nginx-1.4.4
-if [ ! -f nginx-1.4.4.tar.gz ];then
-    wget http://nginx.org/download/nginx-1.4.4.tar.gz
+rm -rf nginx-1.12.1
+if [ ! -f nginx-1.12.1.tar.gz ];then
+    wget http://nginx.org/download/nginx-1.12.1.tar.gz
 fi
-tar zxvf nginx-1.4.4.tar.gz
-cd nginx-1.4.4
+tar zxvf nginx-1.12.1.tar.gz
+cd nginx-1.12.1
 ./configure --user=www \
 --group=www \
 --prefix=$install_dir/server/nginx \

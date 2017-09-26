@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 case $php_version in
-     5.3.29|5.6.30|7.1.3)
+     5.3.29|5.4.23|5.5.38|5.6.30|7.0.23|7.1.3)
         git clone git://github.com/phpredis/phpredis.git
         cd phpredis
         git checkout 3.1.2

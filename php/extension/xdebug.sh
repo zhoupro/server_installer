@@ -14,12 +14,8 @@ case $php_version in
         cd xdebug/
         git checkout XDEBUG_2_2_1
         ;;
-     5.6.30)
-        git clone git://github.com/xdebug/xdebug.git
-        cd xdebug/
-        git checkout XDEBUG_2_5_1
-        ;;
-     7.1.3)
+
+     5.5.38|5.6.30|7.0.23|7.1.3)
         git clone git://github.com/xdebug/xdebug.git
         cd xdebug/
         git checkout XDEBUG_2_5_1

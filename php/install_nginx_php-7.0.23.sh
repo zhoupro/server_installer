@@ -1,10 +1,10 @@
 #!/bin/bash
-rm -rf php-7.1.3
-if [ ! -f php-7.1.3.tar.gz ];then
-    wget http://mirrors.sohu.com/php/php-7.1.3.tar.gz  -O  php-7.1.3.tar.gz
+rm -rf php-7.0.23
+if [ ! -f php-7.0.23.tar.gz ];then
+    wget http://mirrors.sohu.com/php/php-7.0.23.tar.gz  -O  php-7.0.23.tar.gz
 fi
-tar zxvf php-7.1.3.tar.gz
-cd php-7.1.3
+tar zxvf php-7.0.23.tar.gz
+cd php-7.0.23
 ./configure --prefix=$install_dir/server/php \
 --with-config-file-path=$install_dir/server/php/etc \
 --with-mysqli=mysqlnd \
@@ -48,7 +48,7 @@ else
 fi
 make install
 cd ..
-cp ./php-7.1.3/php.ini-production $install_dir/server/php/etc/php.ini
+cp ./php-7.0.23/php.ini-production $install_dir/server/php/etc/php.ini
 #adjust php.ini
 sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "'$install_dir'/server/php/lib/php/extensions/no-debug-non-zts-20160303/"#'  $install_dir/server/php/etc/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 64M/g' $install_dir/server/php/etc/php.ini
@@ -72,6 +72,6 @@ sed -i 's,;slowlog = log/$pool.log.slow,slowlog = '$install_dir'/server/php/var/
 cp $install_dir/server/php/etc/php-fpm.d/www.conf.default $install_dir/server/php/etc/php-fpm.d/www.conf
 
 sed -i 's,listen = 127.0.0.1:9000,listen = 9000,g' $install_dir/server/php/etc/php-fpm.d/www.conf
-install -v -m755 ./php-7.1.3/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
+install -v -m755 ./php-7.0.23/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
 /etc/init.d/php-fpm start
 sleep 5

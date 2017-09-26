@@ -7,14 +7,12 @@ function helper(){
     echo "-s: silence install";
     echo "-i: interactive"
     echo "-c: rm download package"
-
     echo "-m: enable mysql,1:5.6.21"
-    echo "-p: enable php,1:5.3.29 2:5.6.30 3:7.1.3 4:5.4.23"
+    echo "-p: enable php,1:5.3, 2:5.4, 3:5.5, 4:5.6, 5:7.0, 6:7.1"
     echo "-e: only php ext"
-    echo "-n: enable nginx,1:1.4.4"
+    echo "-n: enable nginx,1:1.4 2:1.12"
     echo "-d: debug mode,1:local mini，2:online mini，3:all"
     echo "-x: sphinx,install mysql first"
-
 }
 
 ifmysql=0
@@ -37,8 +35,6 @@ do
          p)
             php_choice=${OPTARG};
             ifphp=1;
-
-
             ;;
          e)
             php_choice=${OPTARG};
@@ -95,11 +91,13 @@ if ((1$ifnginx==11)) ;then
     if (( 1$silence==11 )) ;then
         tmp=$nginx_choice
     else
-        read -p "Please select the nginx version of 1.4.4, input 1: " tmp
+        read -p "Please select the nginx of 1.4.4/1.12.1, input 1 or 2: " tmp
     fi
 
     if [ "$tmp" == "1" ];then
         nginx_version=1.4.4
+    elif [ "$tmp" == "2" ];then
+        nginx_version=1.12.1
     fi
     echo "nginx :  $nginx_version"
     web_dir=nginx-${nginx_version}
@@ -110,17 +108,20 @@ if ((1$ifphp==11||1$ifext==11)) ;then
     if (( 1$silence==11 )) ;then
         tmp=$php_choice
     else
-        read -p "Please select the php version of 5.3.29/5.6.30/7.1.3, input 1 or 2 or 3 or 4 : " tmp
+        read -p "Please select the php version of 5.3.29/5.4.23/5.5.38/5.6.30/7.0.23/7.1.3, input 1 or 2 or 3 or 4 or 5 or 6: " tmp
     fi
     if [ "$tmp" == "1" ];then
         php_version=5.3.29
     elif [ "$tmp" == "2" ];then
-        php_version=5.6.30
-    elif [ "$tmp" == "3" ];then
-        php_version=7.1.3
-
-    elif [ "$tmp" == "4" ];then
         php_version=5.4.23
+    elif [ "$tmp" == "3" ];then
+        php_version=5.5.38
+    elif [ "$tmp" == "4" ];then
+        php_version=5.6.30
+    elif [ "$tmp" == "5" ];then
+        php_version=7.0.23
+    elif [ "$tmp" == "6" ];then
+        php_version=7.1.3
     fi
 
     echo "php    : $php_version"
