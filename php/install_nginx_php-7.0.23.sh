@@ -31,8 +31,8 @@ cd php-7.0.23
 --enable-ftp \
 --with-mcrypt  \
 --with-freetype-dir=/usr/local/freetype.2.1.10 \
---with-jpeg-dir=/usr/local/jpeg.6 \
---with-png-dir=/usr/local/libpng.1.2.50 \
+--with-jpeg \
+--with-png \
 --disable-ipv6 \
 --disable-debug \
 --with-openssl \

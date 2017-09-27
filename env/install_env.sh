@@ -32,6 +32,22 @@ fi
 make install
 cd ..
 
+# centos源不能安装libmcrypt-devel，由于版权的原因没有自带mcrypt的包
+if [ ! -f libmcrypt-2.5.8.tar.gz ];then
+	wget   https://osdn.net/projects/mcrypt/downloads/67082/libmcrypt-2.5.8.1.tar.xz/ -O libmcrypt-2.5.8.tar.xz
+fi
+rm -rf libmcrypt-2.5.8
+tar xJvf libmcrypt-2.5.8.tar.xz
+cd libmcrypt-2.5.8
+./configure --disable-posix-threads
+make
+make install
+/sbin/ldconfig
+cd libltdl/
+./configure --enable-ltdl-install
+make
+make install
+cd ../..
 
 
 git clone git://github.com/libevent/libevent.git
