@@ -37,7 +37,8 @@ cd php-7.1.3
 --disable-debug \
 --with-openssl \
 --disable-maintainer-zts \
---disable-safe-mode
+--disable-safe-mode \
+--enable-intl
 
 
 CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)

@@ -104,6 +104,22 @@ make install-lib
 make install
 cd ..
 
+
+
+# icu for intl
+if [ ! -f icu4c-52_1-src.tgz ];then
+    wget http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-src.tgz
+fi
+wget http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-src.tgz
+tar xf icu4c-52_1-src.tgz
+cd icu/source
+mkdir /usr/local/icu
+./configure --prefix=/usr/local/icu
+make && make install
+cd ../..
+
+
+
 #load /usr/local/lib .so
 touch /etc/ld.so.conf.d/usrlib.conf
 echo "/usr/local/lib" > /etc/ld.so.conf.d/usrlib.conf

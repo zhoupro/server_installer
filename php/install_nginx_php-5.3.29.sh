@@ -39,7 +39,8 @@ cd php-5.3.29
 --with-openssl \
 --disable-maintainer-zts \
 --disable-safe-mode \
---disable-fileinfo
+--disable-fileinfo \
+--enable-intl
 
 CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
 if [ $CPU_NUM -gt 1 ];then
