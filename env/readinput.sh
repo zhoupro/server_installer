@@ -18,6 +18,8 @@ function helper(){
 ifmysql=0
 ifphp=0
 ifnginx=0
+ifext=0
+isclean=1
 
 if ( ! getopts "husic" opt); then
 	echo "Usage: `basename $0` options (-hsmpndui) -h for help";
