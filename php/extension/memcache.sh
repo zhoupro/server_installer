@@ -3,10 +3,10 @@ case $php_version in
      5.3.29)
         #memcache
         if [ ! -f memcache-3.0.6.tgz ];then
-            wget http://oss.aliyuncs.com/aliyunecs/onekey/php_extend/memcache-3.0.6.tgz
+            wget https://pecl.php.net/get/memcache-3.0.8.tgz
         fi
-        rm -rf memcache-3.0.6
-        tar -xzvf memcache-3.0.6.tgz
+        rm -rf memcache-3.0.8
+        tar -xzvf memcache-3.0.8.tgz
         cd memcache-3.0.6
         $install_dir/server/php/bin/phpize
         ./configure --enable-memcache --with-php-config=$install_dir/server/php/bin/php-config
