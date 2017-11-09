@@ -61,6 +61,39 @@ cd ..
 
 
 
+if [ ! -f jpegsrc.v6b.tar.gz ];then
+    wget http://www.ijg.org/files/jpegsrc.v6b.tar.gz
+fi
+rm -rf jpeg-6b
+tar zxvf jpegsrc.v6b.tar.gz
+cd jpeg-6b
+if [ -e /usr/share/libtool/config.guess ];then
+    cp -f /usr/share/libtool/config.guess .
+elif [ -e /usr/share/libtool/config/config.guess ];then
+    cp -f /usr/share/libtool/config/config.guess .
+fi
+if [ -e /usr/share/libtool/config.sub ];then
+    cp -f /usr/share/libtool/config.sub .
+elif [ -e /usr/share/libtool/config/config.sub ];then
+    cp -f /usr/share/libtool/config/config.sub .
+fi
+./configure --prefix=/usr/local/jpeg.6 --enable-shared --enable-static
+mkdir -p /usr/local/jpeg.6/include
+mkdir /usr/local/jpeg.6/lib
+mkdir /usr/local/jpeg.6/bin
+mkdir -p /usr/local/jpeg.6/man/man1
+if [ $CPU_NUM -gt 1 ];then
+    make -j$CPU_NUM
+else
+    make
+fi
+make install-lib
+make install
+cd ..
+
+
+
+
 #load /usr/local/lib .so
 touch /etc/ld.so.conf.d/usrlib.conf
 echo "/usr/local/lib" > /etc/ld.so.conf.d/usrlib.conf

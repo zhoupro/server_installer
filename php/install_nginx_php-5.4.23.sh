@@ -32,7 +32,7 @@ cd php-5.4.23
 --enable-ftp \
 --with-mcrypt  \
 --with-freetype-dir=/usr/local/freetype.2.1.10 \
---with-jpeg \
+--with-jpeg-dir=/usr/local/jpeg.6 \
 --with-png \
 --disable-ipv6 \
 --disable-debug \
