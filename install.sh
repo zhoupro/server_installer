@@ -59,6 +59,7 @@ if ((1$ifphp==11)) ;then
     source ./php/install_nginx_php-${php_version}.sh
     echo "---------- ${php_dir} ok ----------" >> tmp.log
     server_path="$server_path:"$install_dir'/server/php/sbin:'$install_dir'/server/php/bin'
+    ln "$install_dir/server/php/bin/php" /usr/local/bin/php
     source ext_index.sh
 fi
 
