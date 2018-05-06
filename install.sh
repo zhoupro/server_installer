@@ -5,80 +5,29 @@
 #email:zhoushengzheng@gmail.com
 ###########
 
-### question
-echo "Question beginning"
+### 指定安装的软件,版本, 安装目录, 安装模式 
+source ./env/system_info.sh
 source ./env/readinput.sh
-
-### install pxy
-cp ./env/CA.crt  /
-cp ./env/pxy.sh  /usr/local/bin/pxy && chmod 777 -R /usr/local/bin/pxy
-
-
-####---- Clean up the environment ----begin####
-echo "will be uninstalled, wait ..."
-source ./uninstall.sh
-####---- Clean up the environment ----end####
-
-install_log="$install_dir/website-info.log"
-
+#echo $CODENAME
+#echo $SERVER_NAME, $SERVER_VERSION, $BASE_DIR, $SERVER_DEBUG, $SERVER_REMOVE 
+INSTALL_LOG="$BASE_DIR/install-info.log"
 ####---- install software ----begin####
-rm -f tmp.log
-echo "" >tmp.log
 source ./env/install_set_ulimit.sh
-source ./env/install_dir.sh
-echo "---------- make dir ok ----------" >> tmp.log
-source ./env/install_dep.sh
-echo "---------- install dep ok ----------" >> tmp.log
+source ./env/${CODENAME}_dep.sh
 source ./env/install_common.sh
-echo "---------- install common ok ----------" >> tmp.log
+INSTALL_SCRIPT="./servers/$SERVER_NAME/${SERVER_NAME}-${SERVER_VERSION}.sh"
 
-server_path=''
-
-if ((1$ifnginx==11)) ;then
-    source ./nginx/install_nginx-${nginx_version}.sh
-    echo "---------- ${web_dir} ok ----------" >> tmp.log
+if [ ! -f $INSTALL_SCRIPT ]
+then
+    echo "$INSTALL_SCRIPT is not exist"
 fi
-
-if ((1$ifmysql==11)) ;then
-    source ./mysql/install_${mysql_dir}.sh
-    echo "---------- ${mysql_dir} ok ----------" >> tmp.log
-
-    if ((1$ifphp==11)) ;then
-        ####---- mysql password initialization ----begin####
-        echo "---------- rc init ok ----------" >> tmp.log
-        $install_dir/server/php/bin/php -f ./res/init_mysql.php
-        echo "---------- mysql init ok ----------" >> tmp.log
-        ####---- mysql password initialization ----end####
-    fi
-    server_path="$server_path:"$install_dir'/server/mysql/bin'
+source $INSTALL_SCRIPT
+cd "./servers/$SERVER_NAME"
+if [ "x$SERVER_REMOVE" == "x1" ]
+then
+    remove_server
+else
+    mk_dir
+    install_server
+    post_install
 fi
-
-if ((1$ifphp==11)) ;then
-    source ./env/install_env.sh
-    echo "---------- env ok ----------" >> tmp.log
-    source ./php/install_nginx_php-${php_version}.sh
-    echo "---------- ${php_dir} ok ----------" >> tmp.log
-    server_path="$server_path:"$install_dir'/server/php/sbin:'$install_dir'/server/php/bin'
-    ln "$install_dir/server/php/bin/php" /usr/local/bin/php
-    source ext_index.sh
-fi
-
-if ((1$ifext==11)) ;then
-    source ext_index.sh
-fi
-
-
-####---- Environment variable settings ----begin####
-\cp /etc/profile /etc/profile.bak
-
-echo 'export PATH=$PATH'$server_path >> /etc/profile
-export PATH=${PATH}$server_path
-
-if (( 1$isclean==11 )) ;then
-    ls -d *-* | xargs rm -rf
-fi
-
-####---- log ----begin####
-\cp tmp.log $install_log
-cat $install_log
-####---- log ----end####
