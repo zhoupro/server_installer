@@ -91,25 +91,8 @@ make install-lib
 make install
 cd ..
 
-
-
-
 #load /usr/local/lib .so
 touch /etc/ld.so.conf.d/usrlib.conf
 echo "/usr/local/lib" > /etc/ld.so.conf.d/usrlib.conf
 /sbin/ldconfig
-
-#create account.log
-cat > account.log << END
-##########################################################################
-# 
-# thank you for using aliyun virtual machine
-# 
-##########################################################################
-
-MySQL:
-account:root
-password:mysql_password
-END
-
 

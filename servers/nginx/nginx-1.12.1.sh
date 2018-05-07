@@ -1,5 +1,5 @@
 #!/bin/bash
-function mk_dir(){
+function pre_install(){
     useradd -s /bin/nologin www
     groupadd www
     useradd -g www -M -d /opt/www -s /sbin/nologin www &> /dev/null
