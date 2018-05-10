@@ -2,17 +2,43 @@
 安装各种常用的服务，如mysql, php, nginx, redis等
 
 ### 软件
-* nginx: 1.4, 1.12
-* mysql:5.6.21
-* php:5.3, 5.4, 5.5, 5.6, 7.0, 7.1
-* php 扩展:apc, memcache, redis, scws, sphinx,
-          xdebug, xhprof, zend, swoole, intl 
+* nginx 
+* mysql
+* php
 * redis
 * ftp 
 
-### 安装
-./install.sh  
+### php
 
-### 卸载
-./uninstall.sh 
+#### install with debug 
+./install -s php:7.2.5 -b /home/demo/opt -d
+#### install without debug 
+./install -s php:7.2.5 -b /home/demo/opt 
+#### uninstall
+./install -s php:7.2.5 -b /home/demo/opt -u
+#### version
+* 7.2.*
+* 7.1.*
+* 7.0.*
 
+### nginx
+
+#### install with debug 
+./install -s nginx:1.14.1 -b /home/demo/opt -d
+#### install without debug 
+./install -s nginx:1.14.1 -b /home/demo/opt 
+#### uninstall
+./install -s nginx:1.14.1 -b /home/demo/opt -u
+#### version
+* 1.14.*
+
+### redis
+
+#### install with debug 
+./install -s redis:4.0.* -b /home/demo/opt -d
+#### install without debug 
+./install -s redis:4.0.* -b /home/demo/opt 
+#### uninstall
+./install -s redis:4.0.* -b /home/demo/opt -u
+#### version
+* 4.0.*
