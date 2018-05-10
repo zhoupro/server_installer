@@ -8,7 +8,7 @@ function post_install(){
 
     PHP_FPM_CONF="$BASE_DIR/server/php/etc/php-fpm.d/www.conf"
     cd ..
-    cp ./php-7.2.5/php.ini-production $BASE_DIR/server/php/etc/php.ini
+    cp ./php-${SERVER_VERSION}/php.ini-production $BASE_DIR/server/php/etc/php.ini
     #adjust php.ini
     sed -i 's/post_max_size = 8M/post_max_size = 64M/g' $BASE_DIR/server/php/etc/php.ini
     sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' $BASE_DIR/server/php/etc/php.ini
@@ -30,17 +30,17 @@ function post_install(){
     sed -i 's,listen = 127.0.0.1:9000,listen = [::]:9000,g'  $PHP_FPM_CONF 
     sed -i 's,;error_log = log/php-fpm.log,error_log = '$BASE_DIR'/server/php/var/log/php-fpm.log,g' $PHP_FPM_CONF 
     sed -i 's,;slowlog = log/$pool.log.slow,slowlog = '$BASE_DIR'/server/php/var/log/\$pool.log.slow,g' $PHP_FPM_CONF 
-    install -v -m755 ./php-7.2.5/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
+    install -v -m755 ./php-${SERVER_VERSION}/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
     /etc/init.d/php-fpm start
 }
 
 function install_server(){
-    rm -rf php-7.2.5
-    if [ ! -f php-7.2.5.tar.gz ];then
-        wget http://mirrors.sohu.com/php/php-7.2.5.tar.gz  -O  php-7.2.5.tar.gz
+    rm -rf php-${SERVER_VERSION}
+    if [ ! -f php-${SERVER_VERSION}.tar.gz ];then
+        wget http://mirrors.sohu.com/php/php-${SERVER_VERSION}.tar.gz  -O  php-${SERVER_VERSION}.tar.gz
     fi
-    tar zxvf php-7.2.5.tar.gz
-    cd php-7.2.5
+    tar zxvf php-${SERVER_VERSION}.tar.gz
+    cd php-${SERVER_VERSION}
     
     if [ "x$SERVER_DEBUG" == "x1" ]
     then

@@ -26,23 +26,23 @@ function post_install(){
     chmod +x /etc/init.d/nginx
     if [ "x$SERVER_DEBUG" != "x1" ]
     then
-        rm -rf  nginx-1.12.1
+        rm -rf  nginx-${SERVER_VERSION}
     fi
     /etc/init.d/nginx start
 }
 
 function install_server(){
-    rm -rf nginx-1.12.1
-    if [ ! -f nginx-1.12.1.tar.gz ];then
-        wget http://nginx.org/download/nginx-1.12.1.tar.gz
+    rm -rf nginx-${SERVER_VERSION}
+    if [ ! -f nginx-${SERVER_VERSION}.tar.gz ];then
+        wget http://nginx.org/download/nginx-${SERVER_VERSION}.tar.gz
     fi
     if [ "x$SERVER_DEBUG" == "x1" ]
     then
         CONFIG_DEBUG="--with-debug"
     fi
      
-    tar zxvf nginx-1.12.1.tar.gz
-    cd nginx-1.12.1
+    tar zxvf nginx-${SERVER_VERSION}.tar.gz
+    cd nginx-${SERVER_VERSION}
     ./configure --user=www \
         $CONFIG_DEBUG \
     --group=www \
@@ -68,4 +68,6 @@ function remove_server(){
     rm -rf  $BASE_DIR/www/wwwroot
     rm -rf  $BASE_DIR/log/nginx
     rm -rf  $BASE_DIR/log/nginx/access
+    rm -rf  nginx-${SERVER_VERSION} 
+    rm -rf  nginx-${SERVER_VERSION}.tar.gz 
 }

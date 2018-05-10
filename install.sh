@@ -15,11 +15,29 @@ INSTALL_LOG="$BASE_DIR/install-info.log"
 source ./env/install_set_ulimit.sh
 source ./env/${CODENAME}_dep.sh
 source ./env/install_common.sh
-INSTALL_SCRIPT="./servers/$SERVER_NAME/${SERVER_NAME}-${SERVER_VERSION}.sh"
+
+
+#include best install script
+INSTALL_SCRIPT="/tmp/nosuchfile.sh"
+INSTALL_SCRIPT_BASE_DIR="./servers/$SERVER_NAME"
+if [ -f "${INSTALL_SCRIPT_BASE_DIR}/${SERVER_NAME}-${CODENAME}-${SERVER_VERSION}.sh"  ]
+then
+    INSTALL_SCRIPT="${INSTALL_SCRIPT_BASE_DIR}/${SERVER_NAME}-${CODENAME}-${SERVER_VERSION}.sh" 
+elif [ -f "${INSTALL_SCRIPT_BASE_DIR}/${SERVER_NAME}-${CODENAME}.sh"  ]
+then
+    INSTALL_SCRIPT="${INSTALL_SCRIPT_BASE_DIR}/${SERVER_NAME}-${CODENAME}.sh" 
+elif [ -f "${INSTALL_SCRIPT_BASE_DIR}/${SERVER_NAME}-${CODENAME}-comm-${SERVER_VERSION}.sh"  ]
+then
+    INSTALL_SCRIPT="${INSTALL_SCRIPT_BASE_DIR}/${SERVER_NAME}-${CODENAME}-comm-${SERVER_VERSION}.sh" 
+elif [ -f "${INSTALL_SCRIPT_BASE_DIR}/${SERVER_NAME}-comm-${SERVER_VERSION}.sh"  ]
+then
+    INSTALL_SCRIPT="${INSTALL_SCRIPT_BASE_DIR}/${SERVER_NAME}-comm-${SERVER_VERSION}.sh" 
+fi
 
 if [ ! -f $INSTALL_SCRIPT ]
 then
     echo "$INSTALL_SCRIPT is not exist"
+    exit
 fi
 source $INSTALL_SCRIPT
 cd "./servers/$SERVER_NAME"
