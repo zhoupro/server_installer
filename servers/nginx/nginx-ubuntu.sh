@@ -7,7 +7,7 @@ function pre_install(){
     mkdir -p $BASE_DIR/www/wwwroot
     mkdir -p $BASE_DIR/log/nginx
     mkdir -p $BASE_DIR/log/nginx/access
-    ln -s $BASE_DIR/server/nginx $BASE_DIR/server/nginx
+    ln -s $BASE_DIR/server/nginx-${SERVER_VERSION} $BASE_DIR/server/nginx
 }
 
 function post_install(){
