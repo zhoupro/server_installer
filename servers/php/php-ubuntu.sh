@@ -56,30 +56,25 @@ function install_server(){
     --enable-maintainer-zts \
     --enable-inline-optimization \
     --enable-sockets \
-    --enable-wddx \
     --enable-zip \
     --enable-calendar \
     --enable-bcmath \
-    --enable-soap \
     --with-zlib \
     --with-iconv \
     --with-gd \
+    --with-jpeg-dir \
     --with-xmlrpc \
     --enable-mbstring \
     --without-sqlite \
     --enable-ftp \
-    --with-freetype-dir=/usr/local/freetype.2.1.10 \
-    --disable-ipv6 \
-    --disable-debug \
     --with-openssl \
-    --disable-maintainer-zts \
     --enable-intl
 
     CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
     if [ $CPU_NUM -gt 1 ];then
-        make ZEND_EXTRA_LIBS='-liconv' -j$CPU_NUM
+        make  -j$CPU_NUM
     else
-        make ZEND_EXTRA_LIBS='-liconv'
+        make 
     fi
     make install
 }
