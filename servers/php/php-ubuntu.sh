@@ -44,7 +44,9 @@ function install_server(){
     
     if [ "x$SERVER_DEBUG" == "x1" ]
     then
-        CONFIG_DEBUG="--with-debug"
+        CONFIG_DEBUG="--with-debug   --disable-inline-optimization   --disable-maintainer-zts"
+    else 
+        CONFIG_DEBUG=""
     fi
     ./configure --prefix=$BASE_DIR/server/php \
     --with-config-file-path=$BASE_DIR/server/php/etc \
@@ -53,8 +55,6 @@ function install_server(){
     --with-pdo-mysql=mysqlnd \
     --enable-fpm \
     --enable-static \
-    --enable-maintainer-zts \
-    --enable-inline-optimization \
     --enable-sockets \
     --enable-zip \
     --enable-calendar \
