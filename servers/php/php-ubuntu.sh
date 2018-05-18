@@ -44,7 +44,7 @@ function install_server(){
     
     if [ "x$SERVER_DEBUG" == "x1" ]
     then
-        CONFIG_DEBUG=" --with-debug   --disable-inline-optimization --enable-maintainer-zts  "
+        CONFIG_DEBUG=" --with-debug   --disable-inline-optimization --disable-maintainer-zts  "
     else 
         CONFIG_DEBUG=""
     fi
