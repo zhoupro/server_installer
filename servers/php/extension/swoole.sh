@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 PHP_VERSION=$SERVER_VERSION
-php_version=`expr "$PHP_VERSION" : "^\([0-9]*\.[0-9]*\)\.[0-9]*"
+php_version=`expr "$PHP_VERSION" : "^\([0-9]*\.[0-9]*\)\.[0-9]*"`
 
 case $php_version in
      7.1|7.2)
