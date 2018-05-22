@@ -4,8 +4,8 @@ function pre_install(){
     source ./dep_env.sh
 }
 
-function post_install(){
-
+function init_config(){
+    
     PHP_FPM_CONF="$BASE_DIR/server/php/etc/php-fpm.d/www.conf"
     cd ..
     cp ./php-${SERVER_VERSION}/php.ini-production $BASE_DIR/server/php/etc/php.ini
@@ -34,7 +34,18 @@ function post_install(){
     /etc/init.d/php-fpm start
 }
 
+function post_install(){
+    source ./ext.sh
+}
+
 function install_server(){
+
+    if [ -f  $BASE_DIR/server/php/bin/php ]
+    then
+        echo "php had installed"
+        return
+    fi
+
     rm -rf php-${SERVER_VERSION}
     if [ ! -f php-${SERVER_VERSION}.tar.gz ];then
         wget http://mirrors.sohu.com/php/php-${SERVER_VERSION}.tar.gz  -O  php-${SERVER_VERSION}.tar.gz
@@ -77,6 +88,7 @@ function install_server(){
         make 
     fi
     make install
+    init_config
 }
 function remove_server(){
     /etc/init.d/php-fpm stop
