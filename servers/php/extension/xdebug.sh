@@ -11,10 +11,15 @@ case $php_version in
         ;;
 
 
-     5.5|5.6|7.0|7.1|7.2)
+     5.5|5.6|7.0|7.1)
         git clone git://github.com/xdebug/xdebug.git
         cd xdebug/
         git checkout XDEBUG_2_5_1
+        ;;
+     7.2)
+        git clone git://github.com/xdebug/xdebug.git
+        cd xdebug/
+        git checkout XDEBUG_2_6_0
         ;;
 esac
 
