@@ -34,7 +34,7 @@ function post_install(){
 function install_server(){
     rm -rf nginx-${SERVER_VERSION}
     if [ ! -f nginx-${SERVER_VERSION}.tar.gz ];then
-        wget http://nginx.org/download/nginx-${SERVER_VERSION}.tar.gz
+        wget https://github.com/nginx/nginx/archive/release-${SERVER_VERSION}.tar.gz
     fi
     if [ "x$SERVER_DEBUG" == "x1" ]
     then
@@ -42,8 +42,8 @@ function install_server(){
     fi
      
     tar zxvf nginx-${SERVER_VERSION}.tar.gz
-    cd nginx-${SERVER_VERSION}
-    ./configure --user=www \
+    cd nginx-release-${SERVER_VERSION}
+    ./auto/configure --user=www \
         $CONFIG_DEBUG \
     --group=www \
     --prefix=$BASE_DIR/server/nginx \
@@ -68,6 +68,6 @@ function remove_server(){
     rm -rf  $BASE_DIR/www/wwwroot
     rm -rf  $BASE_DIR/log/nginx
     rm -rf  $BASE_DIR/log/nginx/access
-    rm -rf  nginx-${SERVER_VERSION} 
-    rm -rf  nginx-${SERVER_VERSION}.tar.gz 
+    rm -rf  nginx-release-${SERVER_VERSION}
+    rm -rf  nginx-release-${SERVER_VERSION}.tar.gz
 }
