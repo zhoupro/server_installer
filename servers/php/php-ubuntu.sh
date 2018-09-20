@@ -50,8 +50,8 @@ function install_server(){
     if [ ! -f php-${SERVER_VERSION}.tar.gz ];then
         wget https://github.com/php/php-src/archive/php-${SERVER_VERSION}.tar.gz  -O  php-${SERVER_VERSION}.tar.gz
     fi
-    tar zxvf php-${SERVER_VERSION}.tar.gz
-    cd php-${SERVER_VERSION}
+    tar zxvf php-${SERVER_VERSION}.tar.gz  
+    cd php-src-php-${SERVER_VERSION}
     
     if [ "x$SERVER_DEBUG" == "x1" ]
     then
