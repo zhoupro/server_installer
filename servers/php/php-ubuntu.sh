@@ -52,7 +52,7 @@ function install_server(){
     fi
     tar zxvf php-${SERVER_VERSION}.tar.gz  
     cd php-src-php-${SERVER_VERSION}
-    
+    ./buildconf --force
     if [ "x$SERVER_DEBUG" == "x1" ]
     then
         CONFIG_DEBUG=" --with-debug   --disable-inline-optimization --disable-maintainer-zts  "
