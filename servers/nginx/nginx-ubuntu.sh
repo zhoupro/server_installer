@@ -41,7 +41,7 @@ function install_server(){
         CONFIG_DEBUG="--with-debug"
     fi
      
-    tar zxvf nginx-${SERVER_VERSION}.tar.gz
+    tar zxvf release-${SERVER_VERSION}.tar.gz
     cd nginx-release-${SERVER_VERSION}
     ./auto/configure --user=www \
         $CONFIG_DEBUG \
