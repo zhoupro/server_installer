@@ -48,7 +48,7 @@ function install_server(){
 
     rm -rf php-${SERVER_VERSION}
     if [ ! -f php-${SERVER_VERSION}.tar.gz ];then
-        wget http://mirrors.sohu.com/php/php-${SERVER_VERSION}.tar.gz  -O  php-${SERVER_VERSION}.tar.gz
+        wget https://github.com/php/php-src/archive/php-${SERVER_VERSION}.tar.gz  -O  php-${SERVER_VERSION}.tar.gz
     fi
     tar zxvf php-${SERVER_VERSION}.tar.gz
     cd php-${SERVER_VERSION}
