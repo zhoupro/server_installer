@@ -32,7 +32,7 @@ if [  -d ../xdebug ];then
     echo 'xdebug.remote_autostart=1' >> $BASE_DIR/server/php/etc/php.ini &&   \
     echo 'xdebug.remote_connect_back=1' >> $BASE_DIR/server/php/etc/php.ini && \
     echo 'xdebug.remote_handler=dbgp' >> $BASE_DIR/server/php/etc/php.ini && \
-    echo 'xdebug.remote_port=9000' >> $BASE_DIR/server/php/etc/php.ini && \
-    echo 'xdebug.idekey=PHPSTORM' >> $BASE_DIR/server/php/etc/php.ini
+    echo 'xdebug.remote_port=9010' >> $BASE_DIR/server/php/etc/php.ini && \
+    echo 'xdebug.idekey=xdebug' >> $BASE_DIR/server/php/etc/php.ini
     cd ..
 fi

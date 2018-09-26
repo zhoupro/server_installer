@@ -8,7 +8,7 @@ function init_config(){
     
     PHP_FPM_CONF="$BASE_DIR/server/php/etc/php-fpm.d/www.conf"
     cd ..
-    cp ./php-${SERVER_VERSION}/php.ini-production $BASE_DIR/server/php/etc/php.ini
+    cp ./php-src-php-${SERVER_VERSION}/php.ini-production $BASE_DIR/server/php/etc/php.ini
     #adjust php.ini
     sed -i 's/post_max_size = 8M/post_max_size = 64M/g' $BASE_DIR/server/php/etc/php.ini
     sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' $BASE_DIR/server/php/etc/php.ini
