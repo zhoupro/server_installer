@@ -11,11 +11,11 @@
 ### php
 
 #### install with debug 
-./install.sh -s php:7.2.5 -b /home/demo/opt -d
+./install.sh -s php:7.2.5 -b /data -d
 #### install without debug 
-./install.sh -s php:7.2.5 -b /home/demo/opt 
+./install.sh -s php:7.2.5 -b /data 
 #### uninstall
-./install.sh -s php:7.2.5 -b /home/demo/opt -u
+./install.sh -s php:7.2.5 -b /data -u
 #### version
 * 7.2.*
 * 7.1.*
@@ -24,21 +24,25 @@
 ### nginx
 
 #### install with debug 
-./install.sh -s nginx:1.14.1 -b /home/demo/opt -d
+./install.sh -s nginx:1.15.4 -b /data -d
 #### install without debug 
-./install.sh -s nginx:1.14.1 -b /home/demo/opt 
+./install.sh -s nginx:1.15.4 -b /data 
 #### uninstall
-./install.sh -s nginx:1.14.1 -b /home/demo/opt -u
+./install.sh -s nginx:1.15.4 -b /data -u
 #### version
-* 1.14.*
+* 1.15.*
 
 ### redis
 
 #### install with debug 
-./install.sh -s redis:4.0.* -b /home/demo/opt -d
+./install.sh -s redis:4.0.* -b /data -d
 #### install without debug 
-./install.sh -s redis:4.0.* -b /home/demo/opt 
+./install.sh -s redis:4.0.* -b /data 
 #### uninstall
-./install.sh -s redis:4.0.* -b /home/demo/opt -u
+./install.sh -s redis:4.0.* -b /data -u
 #### version
 * 4.0.*
+
+### go
+#### install
+./install.sh -s go:1.11
