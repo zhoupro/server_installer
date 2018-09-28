@@ -35,6 +35,8 @@ function init_config(){
 }
 
 function post_install(){
+    export PATH=$PATH:$BASE_DIR/server/php/bin
+    echo "export PATH=\$PATH:$BASE_DIR/server/php/bin" >> ~/.env
     source ./ext.sh
 }
 
