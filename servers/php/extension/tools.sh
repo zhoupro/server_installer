@@ -7,7 +7,7 @@ case $php_version in
          composer global require "squizlabs/php_codesniffer=*" -vvv
          composer global require "phpmd/phpmd=*" -vvv
          composer global require "friendsofphp/php-cs-fixer=*" -vvv
-         echo "export PATH=\$PATH:$HOME/.composer/vendor/bin" > $HOME/.env
+         echo "export PATH=\$PATH:$HOME/.composer/vendor/bin" >> $HOME/.env
         ;;
 esac
 
