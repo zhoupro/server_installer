@@ -13,8 +13,8 @@ function install_server(){
         wget https://dl.google.com/go/go${SERVER_VERSION}.linux-amd64.tar.gz
         tar -C /usr/local -xzf  go${SERVER_VERSION}.linux-amd64.tar.gz
     fi
-    export PATH=$PATH:/usr/local/go/bin
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.env
+    export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+    echo "export PATH=\$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.env
 }
 
 
