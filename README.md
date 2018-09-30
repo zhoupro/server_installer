@@ -45,4 +45,4 @@
 
 ### go
 #### install
-./install.sh -s go:1.11
+./install.sh -s go:1.9.7
