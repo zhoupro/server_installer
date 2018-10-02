@@ -1,5 +1,6 @@
 #!/bin/bash
 function pre_install(){
+    apt-get install -y libssl-dev
     useradd -s /bin/nologin www
     groupadd www
     useradd -g www -M -d /opt/www -s /sbin/nologin www &> /dev/null
