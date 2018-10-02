@@ -81,6 +81,7 @@ function install_server(){
     --without-sqlite \
     --enable-ftp \
     --with-openssl \
+    --with-curl \
     --enable-intl
 
     CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
