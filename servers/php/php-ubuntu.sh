@@ -69,6 +69,7 @@ function install_server(){
     --enable-fpm \
     --enable-static \
     --enable-sockets \
+    --enable-pcntl \
     --enable-zip \
     --enable-calendar \
     --enable-bcmath \
