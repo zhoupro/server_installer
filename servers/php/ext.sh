@@ -1,8 +1,9 @@
 #!/bin/sh
-source ./extension/composer.sh
-source ./extension/phpunit.sh
-source ./extension/xdebug.sh
-source ./extension/swoole.sh
-source ./extension/tools.sh
+. ./extension/composer.sh
+. ./extension/phpunit.sh
+. ./extension/xdebug.sh
+. ./extension/swoole.sh
+. ./extension/tools.sh
+. ./extension/msgpack.sh
 
 
