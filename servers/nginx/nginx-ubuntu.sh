@@ -39,7 +39,7 @@ function install_server(){
     fi
     if [ "x$SERVER_DEBUG" == "x1" ]
     then
-        CONFIG_DEBUG="--with-debug"
+        CONFIG_DEBUG="--with-debug  --with-cc-opt='-ggdb3 -O0'"
     fi
      
     tar zxvf release-${SERVER_VERSION}.tar.gz
@@ -50,7 +50,6 @@ function install_server(){
     --prefix=$BASE_DIR/server/nginx \
     --with-http_stub_status_module \
     --without-http-cache \
-    --with-http_ssl_module \
     --with-http_gzip_static_module
     CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
     if [ $CPU_NUM -gt 1 ];then
