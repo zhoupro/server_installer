@@ -34,24 +34,31 @@ function post_install(){
 
 function install_server(){
     rm -rf nginx-${SERVER_VERSION}
-    if [ ! -f nginx-${SERVER_VERSION}.tar.gz ];then
+    if [ ! -f release-${SERVER_VERSION}.tar.gz ];then
         wget https://github.com/nginx/nginx/archive/release-${SERVER_VERSION}.tar.gz
     fi
-    if [ "x$SERVER_DEBUG" == "x1" ]
-    then
-        CONFIG_DEBUG="--with-debug  --with-cc-opt='-ggdb3 -O0'"
-    fi
-     
     tar zxvf release-${SERVER_VERSION}.tar.gz
     cd nginx-release-${SERVER_VERSION}
-    ./auto/configure --user=www \
-        $CONFIG_DEBUG \
-    --group=www \
-    --prefix=$BASE_DIR/server/nginx \
-    --with-http_stub_status_module \
-    --without-http-cache \
-    --with-http_gzip_static_module
-    CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
+
+    if [ "x$SERVER_DEBUG" == "x1" ]
+        ./auto/configure  \
+        --with-debug  --with-cc-opt='-ggdb3 -O0 -Wno-error'
+        --user=www \
+        --group=www \
+        --prefix=$BASE_DIR/server/nginx \
+        --with-http_stub_status_module \
+        --without-http-cache \
+        --with-http_gzip_static_module
+    then
+        ./auto/configure  \
+        --user=www \
+        --group=www \
+        --prefix=$BASE_DIR/server/nginx \
+        --with-http_stub_status_module \
+        --without-http-cache \
+        --with-http_gzip_static_module
+    fi
+        CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
     if [ $CPU_NUM -gt 1 ];then
         make -j$CPU_NUM
     else
