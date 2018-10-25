@@ -42,13 +42,20 @@ function install_server(){
 
     if [ "x$SERVER_DEBUG" == "x1" ]
         ./auto/configure  \
-        --with-debug  --with-cc-opt='-ggdb3 -O0 -Wno-error'
-        --user=www \
-        --group=www \
+        --with-cc-opt='-ggdb3 -O0 -Wno-error' \
+        --user=www --group=www \
         --prefix=$BASE_DIR/server/nginx \
         --with-http_stub_status_module \
         --without-http-cache \
-        --with-http_gzip_static_module
+        --with-http_gzip_static_module \
+        --with-debug  
+        CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
+        if [ $CPU_NUM -gt 1 ];then
+            make -j$CPU_NUM CFLAGS='ggdb3 -O0 -Wno-error'
+
+        else
+            make CFLAGS='ggdb3 -O0 -Wno-error'
+        fi
     then
         ./auto/configure  \
         --user=www \
@@ -57,13 +64,14 @@ function install_server(){
         --with-http_stub_status_module \
         --without-http-cache \
         --with-http_gzip_static_module
-    fi
         CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
-    if [ $CPU_NUM -gt 1 ];then
-        make -j$CPU_NUM
-    else
-        make
+        if [ $CPU_NUM -gt 1 ];then
+            make -j$CPU_NUM
+        else
+            make
+        fi
     fi
+    
     make install
 }
 
