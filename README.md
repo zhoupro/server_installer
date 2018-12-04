@@ -2,11 +2,10 @@
 安装各种常用的服务，如mysql, php, nginx, redis等
 
 ### 软件
-* nginx 
+* nginx
 * mysql
 * php
 * redis
-* ftp 
 
 ### php
 
@@ -17,9 +16,9 @@
 #### uninstall
 ./install.sh -s php:7.2.5 -b /data -u
 #### version
-* 7.2.*
-* 7.1.*
-* 7.0.*
+* 7.2
+* 7.1
+* 7.0
 
 ### nginx
 
@@ -30,7 +29,7 @@
 #### uninstall
 ./install.sh -s nginx:1.15.4 -b /data -u
 #### version
-* 1.15.*
+* 1.15
 
 ### redis
 
@@ -41,8 +40,14 @@
 #### uninstall
 ./install.sh -s redis:4.0.* -b /data -u
 #### version
-* 4.0.*
+* 4.0
 
 ### go
 #### install
 ./install.sh -s go:1.9.7
+
+### mysql 
+#### install with debug 
+./install.sh -s mysql:5.6.42 -d
+#### install without debug 
+./install.sh -s mysql:5.6.42 -d
