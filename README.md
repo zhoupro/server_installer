@@ -47,7 +47,9 @@
 ./install.sh -s go:1.9.7
 
 ### mysql 
+#### version
+* 5.7
 #### install with debug 
-./install.sh -s mysql:5.6.42 -d
+./install.sh -s mysql:5.7.24 -d
 #### install without debug 
-./install.sh -s mysql:5.6.42 -d
+./install.sh -s mysql:5.7.24

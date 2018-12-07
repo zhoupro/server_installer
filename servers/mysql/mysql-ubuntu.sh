@@ -19,13 +19,18 @@ function post_install(){
 }
 
 function install_server(){
-    #rm -rf mysql-${SERVER_VERSION}
     BIG_VERSION=`expr  "$SERVER_VERSION" : '\([0-9]*.[0-9]*\).[0-9]*'`
     if [ ! -f mysql-${SERVER_VERSION}.tar.gz ];then
         wget https://dev.mysql.com/get/Downloads/MySQL-${BIG_VERSION}/mysql-${SERVER_VERSION}.tar.gz
     fi
-    #tar xzvf mysql-${SERVER_VERSION}.tar.gz && \
+    if [ ! -d mysql-${SERVER_VERSION} ];then
+        tar xzvf mysql-${SERVER_VERSION}.tar.gz
+    fi
     cd mysql-${SERVER_VERSION}
+    if [ ! -d bld ]; then
+        mkdir -p bld
+        mkdir -p boost
+    fi
     cd bld
 
     if [ "x$SERVER_DEBUG" == "x1" ]
@@ -47,7 +52,21 @@ function install_server(){
             -DWITH_DEBUG=1 \
             ..
     else 
-        cmake  ..
+        cmake  \
+            -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \
+            -DWITH_MYISAM_STORAGE_ENGINE=1 \
+            -DWITH_INNOBASE_STORAGE_ENGINE=1 \
+            -DWITH_MEMORY_STORAGE_ENGINE=1 \
+            -DWITH_READLINE=1 \
+            -DWITH_PARTITION_STORAGE_ENGINE=1 \
+            -DEXTRA_CHARSETS=all \
+            -DDEFAULT_CHARSET=utf8 \
+            -DDEFAULT_COLLATION=utf8_general_ci \
+            -DENABLE_DOWNLOADS=1 \
+            -DDOWNLOAD_BOOST=1 \
+            -DDOWNLOAD_BOOST_TIMEOUT=6000 \
+            -DWITH_BOOST=../boost \
+            ..
     fi
     make   && \
     make install
