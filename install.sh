@@ -4,7 +4,6 @@
 #author:prozhou
 #email:zhoushengzheng@gmail.com
 ###########
-
 ### 指定安装的软件,版本, 安装目录, 安装模式 
 source ./env/system_info.sh
 source ./env/readinput.sh
@@ -14,9 +13,6 @@ INSTALL_LOG="$BASE_DIR/install-info.log"
 ####---- install software ----begin####
 source ./env/install_set_ulimit.sh
 source ./env/${CODENAME}_dep.sh
-source ./env/install_common.sh
-
-
 #include best install script
 INSTALL_SCRIPT="/tmp/nosuchfile.sh"
 INSTALL_SCRIPT_BASE_DIR="./servers/$SERVER_NAME"

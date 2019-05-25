@@ -1,5 +1,6 @@
 #!/bin/bash
 function pre_install(){
+    source  servers/nginx/install_common.sh
     apt-get install -y libssl-dev
     useradd -s /bin/nologin www
     groupadd www
