@@ -2,14 +2,11 @@
 IFUBUNTU=$(cat /etc/issue | grep -i ubuntu)
 IFCENTOS=$(cat /etc/issue | grep -i centos)
 
-    
-if [ "x$IFCENTOS" == "x1" ]
-then
-    yum install -y redhat-lsb
+if [ "$(uname)" == "Darwin" ]; then
+    CODENAME="mac"
+    RELEASE=$(sw_vers | grep ProductVersion | awk  '{print $2}')
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    CODENAME=$(cat /etc/os-release | grep ^ID= | awk -F '=' '{print $2}' |sed -e 's/"//g')
+    RELEASE=$(cat /etc/os-release | grep ^VERSION_ID= | awk -F '=' '{print $2}' |sed -e 's/"//g')
 fi
-
-#操作系统
-CODENAME=$(cat /etc/lsb-release 2>/dev/null|awk -F "=" ' $1 == "DISTRIB_ID" {print $2}'|tr '[A-Z]' '[a-z]')
-#数字号
-RELEASE=$(cat /etc/lsb-release 2>/dev/null|awk -F "=" ' $1 == "DISTRIB_RELEASE" {print $2}')
 

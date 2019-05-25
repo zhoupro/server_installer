@@ -11,8 +11,10 @@ source ./env/readinput.sh
 #echo $SERVER_NAME, $SERVER_VERSION, $BASE_DIR, $SERVER_DEBUG, $SERVER_REMOVE 
 INSTALL_LOG="$BASE_DIR/install-info.log"
 ####---- install software ----begin####
-source ./env/install_set_ulimit.sh
-source ./env/${CODENAME}_dep.sh
+if [ $CODENAME != 'mac' ];then
+    source ./env/install_set_ulimit.sh
+    source ./env/${CODENAME}_dep.sh
+fi
 #include best install script
 INSTALL_SCRIPT="/tmp/nosuchfile.sh"
 INSTALL_SCRIPT_BASE_DIR="./servers/$SERVER_NAME"
