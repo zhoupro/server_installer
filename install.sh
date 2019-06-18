@@ -43,7 +43,7 @@ if [ "x$SERVER_REMOVE" == "x1" ]
 then
     remove_server
 else
-    pre_install 
+    pre_install
     install_server
     post_install
 fi
