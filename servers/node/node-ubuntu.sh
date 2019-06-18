@@ -19,8 +19,8 @@ function install_server(){
         wget https://nodejs.org/dist/v${SERVER_VERSION}/node-v${SERVER_VERSION}-linux-x64.tar.xz
         tar -C /usr/local/lib/nodejs -xJf   node-v${SERVER_VERSION}-linux-x64.tar.xz
     fi
-    export PATH=$PATH:/usr/local/lib/nodejs/node-${SERVER_VERSION}-linux-x64/bin
-    echo "export PATH=\$PATH:/usr/local/lib/nodejs/node-${SERVER_VERSION}-linux-x64/bin" >> ~/.env
+    export PATH=$PATH:/usr/local/lib/nodejs/node-v${SERVER_VERSION}-linux-x64/bin
+    echo "export PATH=\$PATH:/usr/local/lib/nodejs/node-v${SERVER_VERSION}-linux-x64/bin" >> ~/.env
 }
 function remove_server(){
     echo "removing node"

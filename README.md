@@ -53,3 +53,7 @@
 ./install.sh -s mysql:5.7.24 -d
 #### install without debug 
 ./install.sh -s mysql:5.7.24
+
+### node
+#### install
+./install.sh -s node:10.16.0
