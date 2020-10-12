@@ -44,7 +44,7 @@
 
 ### go
 #### install
-./install.sh -s go:1.9.7
+./install.sh -s go:1.15.2
 
 ### mysql 
 #### version
@@ -56,4 +56,4 @@
 
 ### node
 #### install
-./install.sh -s node:10.16.0
+./install.sh -s node:12.19.0
