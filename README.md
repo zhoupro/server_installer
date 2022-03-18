@@ -34,11 +34,17 @@
 ### redis
 
 #### install with debug 
-./install.sh -s redis:4.0.* -b /data -d
+```bash
+./install.sh -s redis:4.0.* -b `pwd`/data -d
+```
 #### install without debug 
-./install.sh -s redis:4.0.* -b /data 
+```bash
+./install.sh -s redis:4.0.* -b `pwd`/data 
+```
 #### uninstall
-./install.sh -s redis:4.0.* -b /data -u
+```bash
+./install.sh -s redis:4.0.* -b `pwd`/data -u
+```
 #### version
 * 4.0
 
