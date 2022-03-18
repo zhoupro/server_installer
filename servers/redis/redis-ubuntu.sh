@@ -4,6 +4,7 @@ function pre_install(){
 }
 
 function post_install(){
+    rm -rf $BASE_DIR/server/redis
     ln -s $BASE_DIR/server/redis-${SERVER_VERSION} $BASE_DIR/server/redis
 }
 
